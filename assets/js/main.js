@@ -17,9 +17,16 @@ function main () {
 		}
 	});
 
-	// Mostramos y ocultamos submenus
-	$('.submenu').click(function(){
-		$(this).children('.children').slideToggle();
+	// Mostramos y ocultamos submenus con animación
+	$('.dropdown-menu').addClass('invisible');
+
+	$('.dropdown').on('show.bs.dropdown', function(e){
+		$('.dropdown-menu').removeClass('invisible');
+		$(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+	});
+
+	$('.dropdown').on('hide.bs.dropdown', function(e){
+		$(this).find('.dropdown-menu').first().stop(true, true).slideUp();
 	});
 }
 
